@@ -33,7 +33,7 @@ describe 'User can CRUD locations' do
     click_on "New Location"
 
     #filling out form for location
-    fill_in 'location[name]', :with => "Mount Everest"
+    fill_in 'location[name]', :with => "g6"
     fill_in 'location[address]', with: "New Address"
     fill_in 'location[zipcode]', with: "90210"
 
@@ -42,7 +42,7 @@ describe 'User can CRUD locations' do
     expect(page).to have_content("Location was successfully created")
 
 
-    click_on "Mount Everest"
+    click_on "g6"
     expect(page).to have_content("90210")
 
 
