@@ -39,27 +39,39 @@ describe 'User can CRUD locations' do
 
     #submitting form to create a location
     click_on "Create Location"
-
-
-    #now we expect the index page to have the name of the location we created.
-    expect(page).to have_content("Mount Everest")
-    # expecting the flash notification
     expect(page).to have_content("Location was successfully created")
 
+
     click_on "Mount Everest"
-    expect(page).to have_content("Mount Everest")
-    expect(page).to have_content("New Address")
     expect(page).to have_content("90210")
+
 
   end
 
   scenario 'User can edit a location' do
-    #fill in
+
+    @location = Location.create(:name => "g6", :address => '1234', :zipcode => 9010)
+
+    visit "/locations/#{@location.id}/edit"
+
+    fill_in 'location[name]', :with => "California"
+    fill_in 'location[address]', with: "westcoast"
+    fill_in 'location[zipcode]', with: "90410"
+
+    click_on "Update Location"
+
+    expect(page).to have_content("California")
   end
 
 
   scenario 'User can delete a location' do
-    #fill in
+    @location = Location.create(:name => "Hello", :address => '4444', :zipcode => 9808)
+
+    visit "/"
+
+    click_on "Delete"
+
+    expect(page).to have_content("Location was successfully destroyed.")
   end
 
 
