@@ -3,7 +3,7 @@ The goal of this exercise is to practice testing a Rails Application using RSPEC
 Example specs have been setup for Home Page and creating a Location.
 
 Bundle
-rake db:create db:migrate
+  rake db:create db:migrate
 
 
 All Specs live in spec/features
